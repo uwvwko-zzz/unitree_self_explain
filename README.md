@@ -1,12 +1,17 @@
 主要是写了这些方面的注释：
+    
     unitree_rl_gym\deploy\deploy_real
+    
     unitree_rl_gym\legged_gym
 
 1.txt是对整个框架的浅显的理解
 
 然后因为他只提供了一个最最最基本的模型，就是大平面训练，
+
 如果要换成terrain模式的话  legged_robot.py  和  legged_robot_config.py   都要修改
+
 unitree_rl_gym\legged_gym\envs\base\txt
+
 这个txt是我自己的一些尝试（但是效果不佳）
 
 然后  unitree_rl_gym\legged_gym\scripts\play_1ro.py  是一个可以通过WASDQE键盘控制机器人在大平面运动的play脚本
