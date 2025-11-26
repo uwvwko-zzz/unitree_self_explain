@@ -17,7 +17,7 @@ unitree_rl_gym\legged_gym\scripts\play_terrain_1ro.py   是单一个楼梯地形
 
 unitree_rl_gym\legged_gym\scripts\test_model.py    用来检测模型质量，但是没搞好
 
-我一开始看的就是宇树的，后面发现这基本都是基于legged_gym的，而且legged_gym的开源比unitree多，所以还是推荐理解一下代码然后自己在legged中注册go2，替换地形区学习
+我一开始看的就是宇树的，后面发现这基本都是基于legged_gym的，而且legged_gym的开源比unitree多，所以还是推荐理解一下代码然后自己在legged中注册go2，替换地形去学习
   
 
     
