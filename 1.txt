@@ -30,3 +30,55 @@ train.py/play.py ——训练和测试代码,引入env文件夹和utils文件夹
                           v
 [Isaac Gym Simulation]  (底层物理引擎)
 
+
+个人的框架理解
+
+
+
+unitree_rl_gym
+       ├──deploy 存放训练好的模型部署脚本
+                ├──deploy_mujoco
+                       ├──deploy_mujoco.py将训练好后的强化学习模型在mujico仿真环境中进行部署的脚本
+                       └──configs存放针对g1、h1机器人的部署参数
+                ├──deploy_real
+                       ├──deploy_real.py将训练好后的强化学习模型在实物中进行部署的脚本
+                       ├──config.py读取配置参数文件的脚本
+                       ├──common存放实物部署过程中的通用脚本，包括指令、远程遥控、旋转变化等脚本
+                              ├──command_helper.py典型的电机控制模式的脚本
+                              ├──remote_controller.py遥控指令的解析的脚本
+                              └──rotation_helper.py重力的分解以及惯导坐标系的调整的脚本
+                       ├──configs存放针对g1、h1机器人的实物部署相关配置，包括强化训练模型目录，PD参数等
+                       ├──README.md介绍实物部署流程的英文说明文档
+                       └──README.zh.md介绍实物部署流程的中文说明文档
+                └──pre_train存放针对g1、h1机器人的实物部署的强化训练模型
+       ├──doc
+                ├──setup_en.md机器人训练到部署过程配置的英文说明文档，包括conda，issacgym，pytorch，legged_gym配置方法等
+                └──setup_zh.md说明文档中文版
+       ├──legged_gym训练机器人的强化学习方法
+                ├──envs
+                        ├──base
+                              ├──legged_robot_config.py为四足机器人控制任务提供完整的环境与训练超参数设置
+                              ├──base_config.py在配置类实例化时自动递归地将嵌套的内部类替换为其实例
+                              ├──base_task.py它封装了IsaacGym的底层仿真逻辑，并为具体任务提供统一接口
+                              ├──legged_robot.py完整的、可运行的isaacgym强化学习环境
+                        ├──go2
+                              ├──go2_config.py定义了用于强化学习训练四足机器人（UnitreeGo2）在粗糙地形上运动的配置类
+                ├──scripts
+                        ├──train.py训练脚本
+                        ├──play.py验证脚本
+                ├──utils
+                        ├──task_registry.py它通过注册机制将环境类、环境配置、训练配置绑定到一个名字上，并提供统一接口来创建环境和训练器
+                        ├──logger.py在强化学习训练或测试过程中记录状态和奖励信息，并支持打印平均奖励统计结果
+                        ├──math.py定义了三个用于四足机器人强化学习仿真的实用数学工具函数
+                        ├──terrain.py用于在框架中动态生成复杂、多样化的仿真地形
+                        ├──isaacgym_utils.py将四元数（quaternion）表示的旋转转换为欧拉角，用于PyTorch张量，并支持GPU加速和TorchScript编译
+                        ├──helpers.py为强化学习训练、配置管理、模型导出、仿真参数解析等提供通用支持函数
+       ├──logs 储存训练后的pt文件
+       ├──resources/robots
+                ├──g1、go2、h1机器人的urdf以及dae文件
+                    .dae 文件是 Collada 3D 模型文件，用于定义四足机器人（如宇树 Unitree）在 Isaac Gym 仿真环境中的视觉外观
+       ├──licenses许可证
+       ├──README.md介绍强化学习方法从训练到仿真部署到实物部署流程的英文说明文档
+       ├──README_zh.md介绍强化学习方法从训练到仿真部署到实物部署流程的中文说明文档
+       └──setup.py依赖库，作者介绍，license版本的介绍以及配置脚本
+
