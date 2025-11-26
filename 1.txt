@@ -1,0 +1,32 @@
+
+go2_cpnfg.py ——具体机器人参数设置
+    |
+    |   为特定机器人指定参数
+    V
+legged_robot_config.py ——定义所有超参数、物理属性、奖励权重、观测缩放、地形设置
+    ^
+    |   获得参数
+    |
+legged_robot.py ——继承自 BaseTask，是 Isaac Gym 环境的具体实现。负责物理仿真、状态更新、奖励计算、重置逻辑等
+    |   获得参数                                                   ^
+    |   继承自 BaseTask 类                                         |    提供支持
+    v   获得参数                                                   |
+base_task.py                                          utils文件夹下的工具函数
+
+train.py/play.py ——训练和测试代码,引入env文件夹和utils文件夹中的内容
+
+
+[命令行参数 (args)] --> [train.py / play.py]
+                          |
+                          v
+[legged_robot_config.py] <---> [go2_config.py / a1_config.py]  (具体机器人配置)
+                          |
+                          v
+[legged_robot.py] <--- (cfg) --- [BaseTask.py] (父类)
+                          |
+                          v
+[utils/helpers.py]   [utils/math.py]   [utils/logger.py]  (工具函数)
+                          |
+                          v
+[Isaac Gym Simulation]  (底层物理引擎)
+
